@@ -1,0 +1,20 @@
+Bước 1: Xác định các thực thể có trong mô hình ERD
+1. phiếu xuất
+2. vật tư
+3. phiếu nhập
+4. dondh
+5. nhacc
+Bước 2: Xác định các mối quan hệ 1 - 1, 1 - n, n - m giữa các thực thể để sinh ra các trường, các bảng tương ứng
+1. phiếu xuất và vật tư mối quan hệ n - n
+2. vật tư và phiếu nhập mối quan hệ n - n
+3. vật tư và dondh mối quan hệ n - n
+4. dondh va nhacc mối quan n - 1
+Bước 3: Xác định các thuộc tính đa trị và tạo thành 1 bảng mới
+sđt là thuộc tính đa trị
+Bước 4: Liệt kê lại danh sách các bảng sau khi chuyển đổi xong
+ 1 . chi tiết phiếu xuất
+ 2. chi tiết phiếu nhập
+ 3 . chi tiết đơn đặt hàng
+ 4. cung cấp
+
+  
