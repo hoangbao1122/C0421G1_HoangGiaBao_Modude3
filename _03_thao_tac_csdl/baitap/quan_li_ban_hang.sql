@@ -23,7 +23,7 @@ create table product(
 create table `order_detail`(
 	o_id int primary key,
         p_id int ,
-        od_qty varchar(50),
+        od_qty int,
         foreign key (o_id)
         references `order`(o_id),
         
@@ -63,7 +63,8 @@ from Customer
 left join `order` on Customer.c_id = `order`.c_id
 where `order`.c_id is null ;
 
-select  `order`.o_id ,`order`.o_date ,product.p_price ,sum(product.p_price) as o_total_price
+select  `order`.o_id ,`order`.o_date ,product.p_price ,sum(product.p_price *`order_detail`.od_qty ) as o_total_price
 from `order_detail`
 inner join `order` on `order`.o_id = order_detail.o_id
-inner join product on product.p_id = order_detail.p_id;
+inner join product on product.p_id = order_detail.p_id
+group by order_detail.o_id;
