@@ -135,8 +135,8 @@ value(1,'Diamond'),
 
 
 insert into khach_hang
-value(1,1,'bao','2000-11-10','123456789','0123456789','hoangbaoasd@gmail.com','da nang'),
-(2,2,'hoang','1988-1-10','201456789','7894561','bao@gmail.com','quang tri'),
+value(1,1,'bao','2000-11-10','123456789','0123456789','hoangbaoasd@gmail.com','vinh'),
+(2,2,'hoang','1988-1-10','201456789','7894561','bao@gmail.com','da nang'),
 (3,3,'gia','1999-2-10','201456789','75123365','gia@gmail.com','quang binh');
 
 
@@ -160,6 +160,7 @@ value(1,1,1,1,'2012-7-20','2012-7-25',10000000),
 (2,2,2,2,'2012-10-25','2012-10-30',10000000),
 (3,3,3,3,'2018-10-25','2012-10-30',10000000);
 
+
 insert into dich_vu_di_kem
 value(1,'thêm kẹo',1000000,1,'còn hàng'),
 (2,'thêm bánh',10000000,1,'còn hàng'),
@@ -168,7 +169,8 @@ value(1,'thêm kẹo',1000000,1,'còn hàng'),
 insert into hop_dong_chi_tiet
 value (1,1,1,1),
 (2,2,2,2),
-(3,3,3,3);
+(3,3,3,3),
+(4,1,1,1);
 
 
 -- 2
@@ -216,4 +218,20 @@ where year(h.ngay_lam_hop_dong) = 2018;
 
 -- 8 
 select distinct h.ho_ten
-from khach_hang h
+from khach_hang h;
+
+-- 9
+-- 10
+select h.id_hop_dong,h.ngay_lam_hop_dong,h.ngay_ket_thuc,h.tien_dat_coc,hop_dong_chi_tiet.so_luong,count(hop_dong_chi_tiet.id_hop_dong) as so_lan_su_dung
+from hop_dong h 
+inner join hop_dong_chi_tiet on h.id_hop_dong = hop_dong_chi_tiet.id_hop_dong
+group by h.id_hop_dong;
+
+-- 11
+select loai.ten_loai_khach,kh.dia_chi
+from  hop_dong h
+inner join khach_hang kh on kh.id_khach_hang = h.id_khach_hang
+inner join  loai_khach loai on loai.id_loai_khach = kh.id_khach_hang  
+where loai.ten_loai_khach = 'Diamond' and  kh.dia_chi = 'vinh' or 'quang ngai'
+
+-- 12
