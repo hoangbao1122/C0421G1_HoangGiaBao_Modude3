@@ -26,9 +26,11 @@ create table nhan_vien(
         email varchar(50),
         dia_chi varchar(50),
         foreign key(id_vi_tri)
-        references vi_tri(id_vi_tri),
+        references vi_tri(id_vi_tri)
+        on delete cascade,
         foreign key(id_trinh_do)
-        references trinh_do(id_trinh_do),
+        references trinh_do(id_trinh_do)
+        on delete cascade,
         foreign key (id_bo_phan)
         references bo_phan(id_bo_phan)
 );
@@ -48,6 +50,7 @@ create table khach_hang(
         
         foreign key (id_loai_khach)
         references loai_khach(id_loai_khach)
+        on delete cascade
 );
 create table kieu_thue(
 	id_kieu_thue int   primary key,
@@ -70,9 +73,11 @@ create table dich_vu(
         id_loai_dich_vu int not null,
         trang_thai varchar(50),
         foreign key(id_kieu_thue)
-        references kieu_thue(id_kieu_thue),
+        references kieu_thue(id_kieu_thue)
+        on delete cascade,
         foreign key(id_loai_dich_vu)
         references loai_dich_vu(id_loai_dich_vu)
+        on delete cascade
 
 );
 create table hop_dong(
@@ -84,13 +89,14 @@ create table hop_dong(
         ngay_ket_thuc date not null,
         tien_dat_coc int not null,
 	foreign key(id_nhan_vien)
-        references nhan_vien(id_nhan_vien),
-        
+        references nhan_vien(id_nhan_vien)
+        on delete cascade,
         foreign key(id_khach_hang)
-        references khach_hang(id_khach_hang),
-        
+        references khach_hang(id_khach_hang)
+        on delete cascade,
         foreign key(id_dich_vu)
         references dich_vu(id_dich_vu)
+        on delete cascade
         
 );
 create table dich_vu_di_kem(
@@ -106,9 +112,11 @@ create table hop_dong_chi_tiet(
         id_dich_vu_di_kem int not null,
         so_luong int,
         foreign key(id_hop_dong)
-        references hop_dong(id_hop_dong),
+        references hop_dong(id_hop_dong)
+        on delete cascade,
         foreign key(id_dich_vu_di_kem)
         references dich_vu_di_kem(id_dich_vu_di_kem)
+        on delete cascade
 );
 
 insert into vi_tri
@@ -156,9 +164,9 @@ value(1,'Villa',400,2,10,1000000 ,1,1,'còn'),
 (3,'Room',400,2,10,3000000 ,3,3,'còn');
 
 insert into hop_dong
-value(1,1,1,1,'2012-7-20','2012-7-25',10000000),
-(2,2,2,2,'2012-10-25','2012-10-30',10000000),
-(3,3,3,3,'2018-10-25','2012-10-30',10000000);
+value(1,1,1,1,'2018-7-20','2012-7-25',10000000),
+(2,2,2,2,'2015/11/1','2012-10-30',10000000),
+(3,3,3,3,'2019-12-25','2012-10-30',10000000);
 
 
 insert into dich_vu_di_kem
@@ -214,8 +222,17 @@ select d.id_dich_vu,d.ten_dich_vu,d.dien_tich,d.so_nguoi_toi_da,d.chi_phi_thue,l
 from dich_vu d
 inner join loai_dich_vu l on l.id_loai_dich_vu = d.id_loai_dich_vu 
 inner join hop_dong h on h.id_dich_vu = d.id_dich_vu
-where year(h.ngay_lam_hop_dong) = 2018;
 
+where h.ngay_lam_hop_dong in (
+	select ngay_lam_hop_dong
+        from hop_dong
+        where year(h.ngay_lam_hop_dong) = 2018
+        )
+and h.ngay_lam_hop_dong not in(
+select ngay_lam_hop_dong
+        from hop_dong
+        where year(h.ngay_lam_hop_dong) = 2019
+);
 -- 8 
 select distinct h.ho_ten
 from khach_hang h;
@@ -232,6 +249,111 @@ select loai.ten_loai_khach,kh.dia_chi
 from  hop_dong h
 inner join khach_hang kh on kh.id_khach_hang = h.id_khach_hang
 inner join  loai_khach loai on loai.id_loai_khach = kh.id_khach_hang  
-where loai.ten_loai_khach = 'Diamond' and  kh.dia_chi = 'vinh' or 'quang ngai'
+where loai.ten_loai_khach = 'Diamond' and  kh.dia_chi = 'vinh' or 'quang ngai';
 
--- 12
+-- 12 còn thiếu
+select h.id_hop_dong,nv.ho_ten,kh.ho_ten,kh.sdt,d.ten_dich_vu,sum(hop_dong_chi_tiet.so_luong)as so_luong_dich_vu_di_kem,h.tien_dat_coc
+from hop_dong h 
+inner join nhan_vien nv on nv.id_nhan_vien = h.id_nhan_vien
+inner join khach_hang kh on kh.id_khach_hang = h.id_khach_hang
+inner join dich_vu d on d.id_dich_vu = h.id_dich_vu
+inner join hop_dong_chi_tiet on h.id_hop_dong = hop_dong_chi_tiet.id_hop_dong
+where h.ngay_lam_hop_dong between '2019/10/1' and '2019/12/31'
+
+group by hop_dong_chi_tiet.id_hop_dong;
+
+-- 13
+select d.id_dich_vu ,count(hop.id_dich_vu_di_kem) as dich_vu_dung_nhieu_nhat
+from dich_vu d
+left join hop_dong h on h.id_dich_vu = h.id_hop_dong
+inner join hop_dong_chi_tiet hop on hop.id_hop_dong = h.id_hop_dong
+group by hop.id_dich_vu_di_kem
+having dich_vu_dung_nhieu_nhat >= count(hop.id_dich_vu_di_kem);
+ 
+-- 14 
+select h.id_hop_dong,loai.ten_loai_dich_vu,dvdk.ten_dich_vu_di_kem,hop.so_luong, count(hop.id_dich_vu_di_kem) as so_lan_su_dung
+from hop_dong h
+inner join dich_vu d on h.id_dich_vu = h.id_hop_dong
+inner join loai_dich_vu loai on loai.id_loai_dich_vu = d.id_loai_dich_vu
+inner join hop_dong_chi_tiet hop on hop.id_hop_dong = h.id_hop_dong
+inner join dich_vu_di_kem dvdk on dvdk.id_dich_vu_di_kem = hop.id_dich_vu_di_kem
+group by(hop.id_dich_vu_di_kem)
+having count(hop.id_dich_vu_di_kem) = 1;
+
+-- 15
+	
+select nv.id_nhan_vien,nv.ho_ten,nv.id_trinh_do,nv.id_bo_phan,nv.sdt,nv.dia_chi,count(h.id_hop_dong) as so_luong_hop_dong
+from nhan_vien nv
+inner join hop_dong h on nv.id_nhan_vien = h.id_nhan_vien
+where year(h.ngay_lam_hop_dong) in (2018,2019)  
+group by h.id_hop_dong
+having count(h.id_hop_dong)  <= 3;
+  
+-- 16 
+create temporary table temp(
+	select nv.id_nhan_vien
+        from nhan_vien nv
+        inner join hop_dong hop on hop.id_nhan_vien = nv.id_nhan_vien
+        where (year(hop.ngay_lam_hop_dong) = 2017) and (year(hop.ngay_lam_hop_dong) = 2019) 
+);
+delete from nhan_vien nv 
+where nv.id_nhan_vien in(
+	select nv.id_nhan_vien
+        from temp
+);
+drop temporary table temp;
+-- 17 
+ select khach_hang.id_khach_hang,khach_hang.ho_ten,loai_khach.ten_loai_khach,hop_dong.id_hop_dong,dich_vu.ten_dich_vu,hop_dong.ngay_lam_hop_dong,hop_dong.ngay_ket_thuc,sum(dich_vu.chi_phi_thue +hop_dong_chi_tiet.so_luong * dich_vu_di_kem.gia ) as total
+ from khach_hang
+  inner join loai_khach on khach_hang.id_loai_khach = loai_khach.id_loai_khach
+  inner join hop_dong on khach_hang.id_khach_hang = hop_dong.id_khach_hang
+  inner join dich_vu on hop_dong.id_dich_vu = dich_vu.id_dich_vu 
+  inner join hop_dong_chi_tiet on hop_dong_chi_tiet.id_hop_dong = hop_dong.id_hop_dong
+  inner join dich_vu_di_kem on hop_dong_chi_tiet.id_dich_vu_di_kem = dich_vu_di_kem.id_dich_vu_di_kem
+group by khach_hang.id_khach_hang
+
+having sum(dich_vu.chi_phi_thue +hop_dong_chi_tiet.so_luong * dich_vu_di_kem.gia) = 23000000 ;
+
+-- 18
+
+create temporary table temp(
+	select kh.id_khach_hang
+        from khach_hang kh
+        inner join hop_dong hop on kh.id_khach_hang = hop.id_khach_hang
+	where year(hop.ngay_lam_hop_dong) < 2016
+);
+delete from khach_hang kh 
+where kh.id_khach_hang in(
+	select kh.id_khach_hang
+        from temp 
+
+);
+drop temporary table temp;
+
+-- 19 
+create temporary table temp(
+	select *,count(hdct.so_luong)
+        from hop_dong_chi_tiet hdct
+        inner join dich_vu_di_kem dvdk on hdct.id_dich_vu_di_kem = dvdk.id_dich_vu_di_kem
+	group by hdct.id_dich_vu_di_kem
+        having count(hdct.so_luong) > 10
+        
+);
+update dich_vu_di_kem dvdk
+        set gia = gia * gia
+where dich_vu_di_kem in(
+        select dvdk.id_dich_vu_di_kem
+        from temp
+        );
+   drop temporary table temp;     
+-- 20
+select nv.id_nhan_vien as'id nhan vien',nv.ho_ten,nv.email,nv.sdt,nv.ngay_sinh,nv.dia_chi 
+from nhan_vien nv
+union all
+select kh.id_nhan_vien as'id khach hang',kh.ho_ten,kh.email,kh.sdt,kh.ngay_sinh,kh.dia_chi  
+from khach_hang kh
+
+        
+
+
+
