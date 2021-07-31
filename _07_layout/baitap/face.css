@@ -1,0 +1,115 @@
+*{
+    margin: 0;
+}
+.menu {
+    height: 56px;
+    background: #FFFFFF;
+}
+#logo{
+    top: -7px;
+    left: -16px;
+    position: absolute;
+}
+#search{
+    background: #F0F2F5;
+    width: 300px;
+    height: 40px;
+    border: 1px solid #555555;
+    border-radius: 25px;
+    top: 8px;
+    left: 60px;
+    position: absolute;
+}
+.leftContent{
+    height: 700px;
+
+}
+.center{
+    height: 56px;
+    background: #FFFFFF;
+    position: relative;
+}
+ul li {
+
+    top: 0px;
+    list-style-type: none;
+
+}
+.icon li img{
+    width: 40px;
+    height: auto;
+    margin-left:80px ;
+    margin-top: -24px;
+    float: left;
+    position: relative;
+}
+.right{
+    height: 56px;
+    position: relative;
+    background: #FFFFFF;
+}
+.right .benphai{
+    display: block;
+    margin-left: 20px;
+}
+.right ul li img{
+    margin-left: 20px;
+    width: 35px;
+    height: auto;
+    float: left;
+    margin-top:-24px;
+    left: -70px;
+    position: relative;
+
+}
+.leftContent{
+    height: 700px;
+    background: #F0F2F5;
+}
+.leftContent ul li {
+    margin-left: -40px;
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+.leftContent span{
+    margin-top: 4px;
+    position: absolute;
+}
+.leftContent img{
+    width: 40px;
+}
+.centerContent{
+    height: 700px;
+}
+#logoAvr{
+    margin-left: 125px;
+    position: relative;
+}
+#logoAvr img{
+    width: 40px;
+}
+#logoAvr span{
+    top: 16px;
+    position: absolute;
+}
+#anh{
+    width: 500px;
+    height: auto;
+    margin-left: 130px;
+    position: relative;
+}
+.rightContent div {
+    margin-bottom: 25px;
+    position: relative;
+}
+.rightContent img{
+    width: 30px;
+
+}
+.rightContent   span{
+    top: -9px ;
+    font-size: 25px;
+    position: relative;
+}
+
+
