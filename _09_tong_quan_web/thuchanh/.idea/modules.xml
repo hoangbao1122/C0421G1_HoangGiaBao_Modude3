@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/login/login.iml" filepath="$PROJECT_DIR$/login/login.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/thuchanh.iml" filepath="$PROJECT_DIR$/.idea/thuchanh.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tienTe/tienTe.iml" filepath="$PROJECT_DIR$/tienTe/tienTe.iml" />
+      <module fileurl="file://$PROJECT_DIR$/time/time.iml" filepath="$PROJECT_DIR$/time/time.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tuDien/tuDien.iml" filepath="$PROJECT_DIR$/tuDien/tuDien.iml" />
+    </modules>
+  </component>
+</project>
