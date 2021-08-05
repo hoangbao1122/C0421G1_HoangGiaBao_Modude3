@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6666940f-63f8-46de-b004-bc5d2219cef7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/baitap/calculator/src/Servlet/CalculatorServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuchanh/dich/src/Servlet/TranslateServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuchanh/tiente/src/Servlet/CurencyServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuchanh/tiente/web/result.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../_11_mvc/thuchanh/src/main/java/controller/CustomerServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../_11_mvc/thuchanh/src/main/java/model/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../_11_mvc/thuchanh/src/main/java/service/CustomerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../_11_mvc/thuchanh/src/main/java/service/Impl/CustomerServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_09_tong_quan_web/thuchanh/tuDien/tuDien.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../_09_tong_quan_web/thuchanh/tuDien/tuDien.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/baitap/src/Bean/Customer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/baitap/src/Servlet/CustomerServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../case_study/caseupdate.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../case_study/caseupdate.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/grid.css" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/grid.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test.txt" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1wHvoghlSaQ295jytm5ok5KDzG5" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6666940f-63f8-46de-b004-bc5d2219cef7" name="Default Changelist" comment="" />
+      <created>1628128504494</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1628128504494</updated>
+      <workItem from="1628128505633" duration="22000" />
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="686" y="211" key="FileChooserDialogImpl" timestamp="1628128522517">
+      <screen x="0" y="0" width="1920" height="1032" />
+    </state>
+    <state x="686" y="211" key="FileChooserDialogImpl/0.0.1920.1032@0.0.1920.1032" timestamp="1628128522517" />
+    <state x="227" y="24" key="new project wizard" timestamp="1628128526390">
+      <screen x="0" y="0" width="1920" height="1032" />
+    </state>
+    <state x="227" y="24" key="new project wizard/0.0.1920.1032@0.0.1920.1032" timestamp="1628128526390" />
+  </component>
+</project>
