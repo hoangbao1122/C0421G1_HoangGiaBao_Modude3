@@ -33,6 +33,8 @@ create table nhan_vien(
         on delete cascade,
         foreign key (id_bo_phan)
         references bo_phan(id_bo_phan)
+           on update cascade
+        on delete cascade
 );
 create table loai_khach(
 	id_loai_khach int not null  primary key,
@@ -50,6 +52,7 @@ create table khach_hang(
         
         foreign key (id_loai_khach)
         references loai_khach(id_loai_khach)
+         on update cascade
         on delete cascade
 );
 create table kieu_thue(
@@ -74,9 +77,11 @@ create table dich_vu(
         trang_thai varchar(50),
         foreign key(id_kieu_thue)
         references kieu_thue(id_kieu_thue)
+         on update cascade
         on delete cascade,
         foreign key(id_loai_dich_vu)
         references loai_dich_vu(id_loai_dich_vu)
+         on update cascade
         on delete cascade
 
 );
@@ -90,12 +95,15 @@ create table hop_dong(
         tien_dat_coc int not null,
 	foreign key(id_nhan_vien)
         references nhan_vien(id_nhan_vien)
+        on update cascade
         on delete cascade,
         foreign key(id_khach_hang)
         references khach_hang(id_khach_hang)
+         on update cascade
         on delete cascade,
         foreign key(id_dich_vu)
         references dich_vu(id_dich_vu)
+         on update cascade
         on delete cascade
         
 );
@@ -116,6 +124,8 @@ create table hop_dong_chi_tiet(
         on delete cascade,
         foreign key(id_dich_vu_di_kem)
         references dich_vu_di_kem(id_dich_vu_di_kem)
+        
+         on update cascade
         on delete cascade
 );
 
@@ -332,28 +342,59 @@ drop temporary table temp;
 
 -- 19 
 create temporary table temp(
-	select *,count(hdct.so_luong)
+	select hdct.id_dich_vu_di_kem as `dich vu`,count(hdct.so_luong)
         from hop_dong_chi_tiet hdct
         inner join dich_vu_di_kem dvdk on hdct.id_dich_vu_di_kem = dvdk.id_dich_vu_di_kem
 	group by hdct.id_dich_vu_di_kem
         having count(hdct.so_luong) > 10
         
 );
-update dich_vu_di_kem dvdk
+update dich_vu_di_kem.id_dich_vu_di_kem
         set gia = gia * gia
-where dich_vu_di_kem in(
+where dvdk.dich_vu_di_kem in(
         select dvdk.id_dich_vu_di_kem
         from temp
         );
    drop temporary table temp;     
--- 20
+-- 20 con sot
 select nv.id_nhan_vien as'id nhan vien',nv.ho_ten,nv.email,nv.sdt,nv.ngay_sinh,nv.dia_chi 
 from nhan_vien nv
 union all
-select kh.id_nhan_vien as'id khach hang',kh.ho_ten,kh.email,kh.sdt,kh.ngay_sinh,kh.dia_chi  
-from khach_hang kh
+select kh.id_khach_hang as'id khach hang',kh.ho_ten,kh.email,kh.sdt,kh.ngay_sinh,kh.dia_chi  
+from khach_hang kh;
 
-        
 
+ -- 21 
+ 
+ create view view_nhan_vien
+ as
+ select nv.id_nhan_vien as `ma so nhan vien`,nv.dia_chi
+ from nhan_vien nv
+ inner join hop_dong hop on nv.id_nhan_vien = hop.id_nhan_vien
+ where nv.dia_chi = 'hai chau' and year(hop.ngay_lam_hop_dong) = '2019/12/12';
+ 
+ 
+   drop view view_nhan_vien;
+  -- 22 chưa dc
+  
+  update  view_nhan_vien
+  set dia_chi = 'lien chieu';
+  
+  -- 23 
+delimiter //
+create procedure sp_1(id_key int)
+begin
+delete from khach_hang kh
+where kh.id_khach_hang = id_key ;
+
+end;
+// delimiter ;
+call sp_1(2);
+
+-- 24 
+
+delimiter//
+create procedure sp_2()
+// delimiter//;
 
 

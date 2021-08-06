@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c5771728-b6d3-49cf-a8b4-5822b0e84a0c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../_09_tong_quan_web/thuchanh/tuDien/tuDien.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../_09_tong_quan_web/thuchanh/tuDien/tuDien.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_10_jsp_jstl/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../_10_jsp_jstl/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_10_jsp_jstl/baitap/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../_10_jsp_jstl/baitap/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_11_mvc/baitap/product/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../_11_mvc/baitap/product/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_11_mvc/thuchanh/build/classes/java/main/controller/CustomerServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_11_mvc/thuchanh/build/classes/java/main/model/Customer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_11_mvc/thuchanh/build/classes/java/main/service/CustomerService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_11_mvc/thuchanh/build/classes/java/main/service/Impl/CustomerServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../case_study/caseupdate.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../case_study/caseupdate.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grid.css" beforeDir="false" afterPath="$PROJECT_DIR$/grid.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test.txt" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1wLMm7B8uWz6eRtalnNjLv9TnBh" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../_11_mvc" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c5771728-b6d3-49cf-a8b4-5822b0e84a0c" name="Default Changelist" comment="" />
+      <created>1628233571132</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1628233571132</updated>
+      <workItem from="1628233572287" duration="56000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="687" y="211" key="FileChooserDialogImpl" timestamp="1628233627685">
+      <screen x="0" y="0" width="1920" height="1032" />
+    </state>
+    <state x="687" y="211" key="FileChooserDialogImpl/0.0.1920.1032@0.0.1920.1032" timestamp="1628233627685" />
+    <state x="559" y="36" width="1361" height="960" key="new project wizard" timestamp="1628233621839">
+      <screen x="0" y="0" width="1920" height="1032" />
+    </state>
+    <state x="559" y="36" width="1361" height="960" key="new project wizard/0.0.1920.1032@0.0.1920.1032" timestamp="1628233621839" />
+  </component>
+</project>
