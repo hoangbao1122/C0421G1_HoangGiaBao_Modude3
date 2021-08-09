@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" build-on-make="true" name="_11_mvc">
+    <output-path>$PROJECT_DIR$/out/artifacts/_11_mvc</output-path>
+    <root id="root">
+      <element id="archive" name="_11_mvc.jar">
+        <element id="module-output" name="_11_mvc" />
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$PROJECT_DIR$/baitap/META-INF/MANIFEST.MF" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
