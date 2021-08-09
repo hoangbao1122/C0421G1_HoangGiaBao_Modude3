@@ -58,7 +58,7 @@ public class UserServlet extends HttpServlet {
                 deleteUser(request,response);
                 break;
             case "search":
-                showFormSearch(request,response);
+//                showFormSearch(request,response);
                 break;
             case "orderBy":
                 orderBy(request,response);
