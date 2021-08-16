@@ -4,7 +4,7 @@ import model.bean.employee.Position;
 
 import java.util.List;
 
-public interface IPosition {
-    List<Position> listAll();
+public interface IPosition<T> {
+    List<T> listAll();
 
 }

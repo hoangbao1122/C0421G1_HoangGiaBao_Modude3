@@ -10,4 +10,6 @@ public interface ICustomerRepository {
     Customer findById(int id);
     void deleteCus(int id);
     void edit(Customer customer);
+    List<Customer>search(String name);
+    
 }

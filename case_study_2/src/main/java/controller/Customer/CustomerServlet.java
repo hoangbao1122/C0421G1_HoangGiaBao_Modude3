@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 
 @javax.servlet.annotation.WebServlet(name = "Servlet", urlPatterns = {"/customer"})
@@ -51,7 +52,10 @@ public class CustomerServlet extends javax.servlet.http.HttpServlet {
                 showFormEdit(request, response);
                 break;
             case "delete":
-                deleteCus(request,response);
+                deleteCus(request, response);
+                break;
+            case "search":
+                search(request, response);
                 break;
             default:
                 request.setAttribute("listAll", this.interfaceService.listAll());
@@ -70,14 +74,24 @@ public class CustomerServlet extends javax.servlet.http.HttpServlet {
         String email = request.getParameter("emailCus");
         String address = request.getParameter("addressCus");
 
+
         Customer customer = new Customer(name, type, birthday, gender, card, phone, email, address);
-        this.interfaceService.create(customer);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("case-study/customer/createCustomer.jsp");
-        try {
-            requestDispatcher.forward(request, response);
-        } catch (ServletException | IOException e) {
-            e.printStackTrace();
+        Map<String, String> map = this.interfaceService.create(customer);
+        if (map.isEmpty()) {
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("case-study/customer/createCustomer.jsp");
+            try {
+                requestDispatcher.forward(request, response);
+            } catch (ServletException | IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            request.setAttribute("nameValidate", map);
+            request.setAttribute("emailValidate",map);
+            request.setAttribute("phoneValidate",map);
+            request.setAttribute("customer", customer);
+            showFormCreate(request, response);
         }
+
     }
 
     private void showFormCreate(HttpServletRequest request, HttpServletResponse response) {
@@ -141,6 +155,20 @@ public class CustomerServlet extends javax.servlet.http.HttpServlet {
         RequestDispatcher requestDispatcher2 = request.getRequestDispatcher("case-study/customer/editCustomer.jsp");
         try {
             requestDispatcher2.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void search(HttpServletRequest request, HttpServletResponse response) {
+        String name = request.getParameter("nameCus");
+        List<Customer> list = this.interfaceService.search(name);
+        request.setAttribute("listAll", list);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/Customer.jsp");
+        try {
+            requestDispatcher.forward(request, response);
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {

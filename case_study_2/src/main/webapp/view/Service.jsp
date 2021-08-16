@@ -41,6 +41,7 @@
             <td><c:out value="${ServiceObj.descriptionOtherConvenience}"/></td>
             <td><c:out value="${ServiceObj.poolArea}"/></td>
             <td><c:out value="${ServiceObj.numberOfFloor}"/></td>
+            <td><a href="/service?action=delete&serviceDelete=${ServiceObj.id}">Delete</a></td>
         </tr>
     </c:forEach>
 </table>

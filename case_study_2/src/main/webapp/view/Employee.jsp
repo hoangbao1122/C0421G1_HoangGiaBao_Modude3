@@ -32,7 +32,7 @@
         <th>Education</th>
         <th>Division</th>
         <th>UserName</th>
-        <th colspan="2">Active</th>
+        <th colspan="2" style="text-align: center">Active</th>
     </tr>
     <c:forEach var="empObj" items="${listEmp}">
         <tr>
@@ -49,12 +49,47 @@
             <td><c:out value="${empObj.divisionEmp}"/></td>
             <td><c:out value="${empObj.userNameEmp}"/></td>
             <td><button class="btn btn-warning"><a href="/employee?action=edit&empId=${empObj.idEmp}" style="text-decoration: none;color: white">Edit</a></button></td>
-            <td><button class="btn btn-danger"><a href="/employee?action=delete&empId=${empObj.idEmp}" style="text-decoration: none;color: white">Delete</a></button></td>
+            <td><button class="btn btn-danger" onclick="onDelete('${empObj.idEmp}','${empObj.nameEmp}')" data-bs-toggle="modal" data-bs-target="#modal-delete">Delete</button></td>
         </tr>
     </c:forEach>
 </table>
 </div>
+
+<div class="modal fade" id="modal-delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete employee</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="/employee">
+                <input type="hidden" name="action" value="delete">
+                <input type="hidden" name="empId" value="" id="idListDelete">
+                <div class="modal-body">
+                    Bạn muốn xóa
+                   Employee có tên là <input type="text" id="nameListDelete" readonly style="outline: none">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function onDelete(id,name) {
+        document.getElementById("idListDelete").value = id;
+        console.log(id);
+        document.getElementById("nameListDelete").value = name;
+        console.log(name);
+    }
+</script>
 <!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
 </body>
 </html>

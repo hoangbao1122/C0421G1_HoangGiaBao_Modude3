@@ -1,6 +1,5 @@
 package model.Service.Impl;
 
-import model.Service.IService;
 import model.bean.Service;
 import model.repository.Impl.dichVu.IServiceRepository;
 import model.repository.Impl.dichVu.ServiceRepositoryImpl;

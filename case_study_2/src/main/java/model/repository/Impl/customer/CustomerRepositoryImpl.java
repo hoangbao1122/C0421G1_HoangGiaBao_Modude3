@@ -129,5 +129,37 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
         }
     }
 
+    @Override
+    public List<Customer> search(String name) {
+        List<Customer> list = new ArrayList<>();
+        try {
+            PreparedStatement preparedStatement = this.baseRepository.getConnection().prepareStatement
+                    ("\n" +
+                            "select * \n" +
+                            "from customer\n" +
+                            "where `customer_name` = ?;");
+            preparedStatement.setString(1,name);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            Customer customer = null;
+            while (resultSet.next()){
+                customer = new Customer();
+                customer.setId(resultSet.getInt("customer_id"));
+                customer.setType_id(resultSet.getInt("customer_type_id"));
+                customer.setName(resultSet.getString("customer_name"));
+                customer.setBirthday(resultSet.getString("customer_birthday"));
+                customer.setGender(resultSet.getString("customer_gender"));
+                customer.setId_card(resultSet.getString("customer_id_card"));
+                customer.setPhone(resultSet.getString("customer_phone"));
+                customer.setEmail(resultSet.getString("customer_email"));
+                customer.setAddress(resultSet.getString("customer_address"));
+                list.add(customer);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return list;
+    }
+
 
 }

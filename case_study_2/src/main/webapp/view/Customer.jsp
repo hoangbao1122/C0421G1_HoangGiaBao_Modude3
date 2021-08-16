@@ -18,6 +18,12 @@
     .btn .btn-success {
 
     }
+    .form-control{
+        width: 30%;
+        margin-left: 400px;
+        position: relative;
+
+    }
 </style>
 <body>
 
@@ -26,6 +32,11 @@
     <table border="1" class="table">
         <button class="btn btn-success"><a href="/customer?action=create" style="color: white;text-decoration: none">Thêm
             mới</a></button>
+        <form action="/customer">
+            <input type="hidden" name="action" value="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="nameCus">
+            <button class="btn btn-outline-success" id="nutSearch" type="submit" style="margin-left: 789px;margin-top: -37px">Search</button>
+        </form>
         <tr>
             <th>Id</th>
             <th>Type Id</th>

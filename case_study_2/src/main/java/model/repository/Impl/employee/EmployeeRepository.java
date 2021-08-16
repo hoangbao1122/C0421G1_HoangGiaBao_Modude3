@@ -79,7 +79,7 @@ public class EmployeeRepository implements IEmployeeRespository {
                     ResultSet resultSet = preparedStatement.executeQuery();
                     if (resultSet.next()){
                      employee = new Employee();
-                     employee.setIdEmp(resultSet.getInt("id_emp"));
+                     employee.setIdEmp(id);
                      employee.setNameEmp(resultSet.getString("name_emp"));
                      employee.setBirthdayEmp(resultSet.getString("birthday_emp"));
                      employee.setIdCardEmp(resultSet.getString("id_card_emp"));
@@ -104,6 +104,33 @@ public class EmployeeRepository implements IEmployeeRespository {
                     ("delete from employee\n" +
                             "where id_emp = ?;");
             preparedStatement.setInt(1,id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    @Override
+    public void edit(Employee employee) {
+        try {
+            PreparedStatement preparedStatement = this.baseRepository.getConnection().prepareStatement
+                    ("update  employee\n" +
+                            "set name_emp = ? ,birthday_emp= ?,id_card_emp=?,salary_emp=?,phone_emp=?,email_emp=?,address_emp=?,position_id=?,education_degree_id=?,division_id=?,username=?\n" +
+                            "where id_emp = ?;");
+
+            preparedStatement.setString(1,employee.getNameEmp());
+            preparedStatement.setString(2,employee.getBirthdayEmp());
+            preparedStatement.setString(3,employee.getIdCardEmp());
+            preparedStatement.setString(4,employee.getSalaryEmp());
+            preparedStatement.setString(5,employee.getPhoneEmp());
+            preparedStatement.setString(6,employee.getEmailEmp());
+            preparedStatement.setString(7,employee.getAddressEmp());
+            preparedStatement.setInt(8,employee.getPositionEmp());
+            preparedStatement.setInt(9,employee.getEducationEmp());
+            preparedStatement.setInt(10,employee.getDivisionEmp());
+            preparedStatement.setString(11,employee.getUserNameEmp());
+            preparedStatement.setInt(12,employee.getIdEmp());
+
             preparedStatement.executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();

@@ -25,8 +25,14 @@
     <form action="" method="post">
         <h1 align="center">Thêm mới Customer</h1>
         <div class="mb-3">
+
             <label for="name" class="form-label">Name</label>
-            <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="nameCus">
+
+            <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="nameCus"
+                   value="${customer.getName()}">
+            <c:if test="${nameValidate.get('name')!=null}">  <%-- name   // service--%>
+                <span style="color: red">${nameValidate.get('name')}</span>
+            </c:if>
         </div>
 
         <div class="mb-3">
@@ -41,8 +47,10 @@
             <input type="date" class="form-control" id="birthday" name="birthdayCus">
         </div>
         <div class="mb-3">
-            <label for="Gender" class="form-label">Gender</label>
-            <input type="text" class="form-control" id="Gender" name="genderCus">
+            <select class="form-select" aria-label="Default select example" name="genderCus">
+                <option value="male">Nam</option>
+                <option value="female">Nữ</option>
+            </select>
         </div>
         <div class="mb-3">
             <label for="Card" class="form-label">Id Card</label>
@@ -50,11 +58,17 @@
         </div>
         <div class="mb-3">
             <label for="Phone" class="form-label">Phone</label>
-            <input type="text" class="form-control" id="Phone" aria-describedby="emailHelp" name="phoneCus">
+            <input type="text" class="form-control" id="Phone" aria-describedby="emailHelp" name="phoneCus" value="${customer.getPhone()}">
+            <c:if test="${phoneValidate.get('phone')!=null}">  <%-- name   // service--%>
+                <span style="color: red">${phoneValidate.get('phone')}</span>
+            </c:if>
         </div>
         <div class="mb-3">
             <label for="Email" class="form-label">Email</label>
-            <input type="text" class="form-control" id="Email" aria-describedby="emailHelp" name="emailCus">
+            <input type="text" class="form-control" id="Email" aria-describedby="emailHelp" name="emailCus"value="${customer.getEmail()}">
+            <c:if test="${emailValidate.get('email')!=null}">  <%-- name   // service--%>
+                <span style="color: red">${nameValidate.get('email')}</span>
+            </c:if>
         </div>
         <div class="mb-3">
             <label for="Address" class="form-label">Address</label>

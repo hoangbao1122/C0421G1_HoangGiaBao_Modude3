@@ -47,8 +47,11 @@
             <input type="text" class="form-control" id="address" aria-describedby="emailHelp" name="addressEmp">
         </div>
         <div class="mb-3">
-            <label for="position" class="form-label">position</label>
-            <input type="text" class="form-control" id="position" aria-describedby="emailHelp" name="positionEmp">
+            <select class="form-select" aria-label="Default select example" name="type">
+                <c:forEach items="${position}" var="position">
+                    <option value="${position.getIdPos()}">${position.getNamePos()}</option>
+                </c:forEach>
+            </select>
         </div>
         <div class="mb-3">
             <label for="aducation" class="form-label">aducation</label>

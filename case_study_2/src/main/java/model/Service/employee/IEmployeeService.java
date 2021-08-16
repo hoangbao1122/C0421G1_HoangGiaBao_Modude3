@@ -9,4 +9,5 @@ public interface IEmployeeService {
     void create(Employee employee);
     Employee findId(int id);
     void delete(int id);
+    void edit(Employee employee);
 }

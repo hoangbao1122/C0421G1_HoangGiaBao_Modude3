@@ -1,9 +1,8 @@
 package controller;
 
-import model.Service.IService;
+import model.Service.Impl.IService;
 import model.Service.Impl.ServiceImpl;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,19 +37,16 @@ public class ServiceServlet extends HttpServlet {
             case "create":
 //                create(request,response);
                 break;
+            case "delete":
+                break;
             default:
                 request.setAttribute("listAllService", this.iService.listAll());
                 request.getRequestDispatcher("view/Service.jsp").forward(request, response);
                 break;
         }
     }
+    private void deleteDichVu(HttpServletRequest request,HttpServletResponse response){
 
-//    private void showList(HttpServletRequest request, HttpServletResponse response) {
-//        RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/Service.jsp");
-//        try {
-//            requestDispatcher.forward(request, response);
-//        } catch (ServletException | IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    }
 }
+
